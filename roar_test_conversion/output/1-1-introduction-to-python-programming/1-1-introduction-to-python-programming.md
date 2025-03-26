@@ -51,6 +51,8 @@ To get the result, this code site has prepared the following code block. On the 
 3+2
 ```
 
+Output:
+
 
 
 
@@ -74,6 +76,8 @@ print(3+2.0)
 print(17/3)
 ```
 
+Output:
+
 5.0
 5.666666666666667
 
@@ -91,6 +95,8 @@ The difference lies in the way numeric numbers are represented in computer. For 
 print(type(5))
 print(type(5.0))
 ```
+
+Output:
 
 <class 'int'>
 <class 'float'>
@@ -137,6 +143,8 @@ print(a//b)
 print(type(a//b))
 ```
 
+Output:
+
 2.0
 <class 'float'>
 2
@@ -156,6 +164,8 @@ print(result)
 print(math.factorial(10))
 ```
 
+Output:
+
 3628800
 3628800
 3628800
@@ -168,6 +178,8 @@ Python is easy to understand in english, and describes the users intent rather t
 ## Print 3 + 2
 print(3 + 2)
 ```
+
+Output:
 
 5
 
