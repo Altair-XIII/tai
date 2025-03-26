@@ -2,7 +2,7 @@ from pathlib import Path
 import nbformat
 from nbconvert import MarkdownExporter
 
-from rag.file_convrsion_router.conversion.base_converter import BaseConverter
+from rag.file_conversion_router.conversion.base_converter import BaseConverter
 from rag.file_conversion_router.classes.page import Page
 
 
@@ -28,9 +28,26 @@ class NotebookConverter(BaseConverter):
         for i, line in enumerate(lines):
             if i == 1: # convert lecture title to h1
                 processed_lines.append(f"# {line.lstrip('#').strip()}")
+            
             elif line.startswith("#"): # convert all other heading down one level
                 processed_lines.append(f"#{line.strip()}")
+            
+            # mark python block outputs
+            elif line.startswith("```python"):
+                start_python_block = i
+                processed_lines.append(line.strip())
+
+            elif not line.startswith("```python") and line.startswith("```"): 
+                processed_lines.append(line.strip()) 
+                processed_lines.append("\nOutput:")
+                
+                # for j in range(i - 1, start_python_block, -1):  
+                #     if "print(" in processed_lines[j] or "print " in processed_lines[j]:
+                #         processed_lines.append("\nOutput:")
+                #         break 
+                #     if processed_lines[j].startswith("```python"):
+                #         break 
             else:
                 processed_lines.append(line.strip()) 
 
-        return "\n".join(processed_lines) 
+        return "\n".join(processed_lines)
